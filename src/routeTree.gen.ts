@@ -15,6 +15,8 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as MenuRouteImport } from './routes/menu'
 import { Route as AuthenticatedCheckoutRouteImport } from './routes/_authenticated/checkout'
+import { Route as AuthenticatedFloorRouteImport } from './routes/_authenticated/floor'
+import { Route as AuthenticatedKitchenRouteImport } from './routes/_authenticated/kitchen'
 import { Route as AuthenticatedReserveRouteImport } from './routes/_authenticated/reserve'
 import { Route as AuthenticatedOrdersIndexRouteImport } from './routes/_authenticated/orders.index'
 import { Route as AuthenticatedOrdersIdRouteImport } from './routes/_authenticated/orders.$id'
@@ -48,6 +50,16 @@ const AuthenticatedCheckoutRoute = AuthenticatedCheckoutRouteImport.update({
   path: '/checkout',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedFloorRoute = AuthenticatedFloorRouteImport.update({
+  id: '/floor',
+  path: '/floor',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedKitchenRoute = AuthenticatedKitchenRouteImport.update({
+  id: '/kitchen',
+  path: '/kitchen',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedReserveRoute = AuthenticatedReserveRouteImport.update({
   id: '/reserve',
   path: '/reserve',
@@ -71,6 +83,8 @@ export interface FileRoutesByFullPath {
   '/cart': typeof CartRoute
   '/menu': typeof MenuRoute
   '/checkout': typeof AuthenticatedCheckoutRoute
+  '/floor': typeof AuthenticatedFloorRoute
+  '/kitchen': typeof AuthenticatedKitchenRoute
   '/reserve': typeof AuthenticatedReserveRoute
   '/orders/$id': typeof AuthenticatedOrdersIdRoute
   '/orders/': typeof AuthenticatedOrdersIndexRoute
@@ -81,6 +95,8 @@ export interface FileRoutesByTo {
   '/cart': typeof CartRoute
   '/menu': typeof MenuRoute
   '/checkout': typeof AuthenticatedCheckoutRoute
+  '/floor': typeof AuthenticatedFloorRoute
+  '/kitchen': typeof AuthenticatedKitchenRoute
   '/reserve': typeof AuthenticatedReserveRoute
   '/orders/$id': typeof AuthenticatedOrdersIdRoute
   '/orders': typeof AuthenticatedOrdersIndexRoute
@@ -93,6 +109,8 @@ export interface FileRoutesById {
   '/cart': typeof CartRoute
   '/menu': typeof MenuRoute
   '/_authenticated/checkout': typeof AuthenticatedCheckoutRoute
+  '/_authenticated/floor': typeof AuthenticatedFloorRoute
+  '/_authenticated/kitchen': typeof AuthenticatedKitchenRoute
   '/_authenticated/reserve': typeof AuthenticatedReserveRoute
   '/_authenticated/orders/$id': typeof AuthenticatedOrdersIdRoute
   '/_authenticated/orders/': typeof AuthenticatedOrdersIndexRoute
@@ -105,6 +123,8 @@ export interface FileRouteTypes {
     | '/cart'
     | '/menu'
     | '/checkout'
+    | '/floor'
+    | '/kitchen'
     | '/reserve'
     | '/orders/$id'
     | '/orders/'
@@ -115,6 +135,8 @@ export interface FileRouteTypes {
     | '/cart'
     | '/menu'
     | '/checkout'
+    | '/floor'
+    | '/kitchen'
     | '/reserve'
     | '/orders/$id'
     | '/orders'
@@ -126,6 +148,8 @@ export interface FileRouteTypes {
     | '/cart'
     | '/menu'
     | '/_authenticated/checkout'
+    | '/_authenticated/floor'
+    | '/_authenticated/kitchen'
     | '/_authenticated/reserve'
     | '/_authenticated/orders/$id'
     | '/_authenticated/orders/'
@@ -183,6 +207,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedCheckoutRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/floor': {
+      id: '/_authenticated/floor'
+      path: '/floor'
+      fullPath: '/floor'
+      preLoaderRoute: typeof AuthenticatedFloorRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/kitchen': {
+      id: '/_authenticated/kitchen'
+      path: '/kitchen'
+      fullPath: '/kitchen'
+      preLoaderRoute: typeof AuthenticatedKitchenRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/reserve': {
       id: '/_authenticated/reserve'
       path: '/reserve'
@@ -209,6 +247,8 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedCheckoutRoute: typeof AuthenticatedCheckoutRoute
+  AuthenticatedFloorRoute: typeof AuthenticatedFloorRoute
+  AuthenticatedKitchenRoute: typeof AuthenticatedKitchenRoute
   AuthenticatedReserveRoute: typeof AuthenticatedReserveRoute
   AuthenticatedOrdersIdRoute: typeof AuthenticatedOrdersIdRoute
   AuthenticatedOrdersIndexRoute: typeof AuthenticatedOrdersIndexRoute
@@ -216,6 +256,8 @@ interface AuthenticatedRouteRouteChildren {
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedCheckoutRoute: AuthenticatedCheckoutRoute,
+  AuthenticatedFloorRoute: AuthenticatedFloorRoute,
+  AuthenticatedKitchenRoute: AuthenticatedKitchenRoute,
   AuthenticatedReserveRoute: AuthenticatedReserveRoute,
   AuthenticatedOrdersIdRoute: AuthenticatedOrdersIdRoute,
   AuthenticatedOrdersIndexRoute: AuthenticatedOrdersIndexRoute,

@@ -7,6 +7,7 @@ import { RoleGate } from "@/components/RoleGate";
 import { OrderStatusBadge } from "@/components/OrderStatusBadge";
 import { formatMoney, formatTime } from "@/lib/format";
 import { Button } from "@/components/ui/button";
+import type { Database } from "@/integrations/supabase/types";
 
 export const Route = createFileRoute("/_authenticated/floor")({
   head: () => ({
@@ -86,7 +87,10 @@ function FloorView() {
     };
   }, [queryClient]);
 
-  async function updateOrder(id: string, patch: Record<string, string>) {
+  async function updateOrder(
+    id: string,
+    patch: { status?: Database["public"]["Enums"]["order_status"]; payment_status?: Database["public"]["Enums"]["payment_status"] },
+  ) {
     const { error } = await supabase.from("orders").update(patch).eq("id", id);
     if (error) {
       toast.error(error.message);
