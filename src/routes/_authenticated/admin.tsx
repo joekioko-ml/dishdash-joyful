@@ -4,6 +4,8 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { RoleGate } from "@/components/RoleGate";
+import { AdminAnalytics } from "@/components/AdminAnalytics";
+
 import { formatMoney } from "@/lib/format";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -47,11 +49,15 @@ function AdminPage() {
       <Tabs defaultValue="overview" className="mt-8">
         <TabsList>
           <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="analytics">Analytics</TabsTrigger>
           <TabsTrigger value="menu">Menu</TabsTrigger>
           <TabsTrigger value="staff">Staff</TabsTrigger>
         </TabsList>
         <TabsContent value="overview">
           <Overview />
+        </TabsContent>
+        <TabsContent value="analytics">
+          <AdminAnalytics />
         </TabsContent>
         <TabsContent value="menu">
           <MenuAdmin />
@@ -60,6 +66,7 @@ function AdminPage() {
           <StaffAdmin />
         </TabsContent>
       </Tabs>
+
     </div>
   );
 }
