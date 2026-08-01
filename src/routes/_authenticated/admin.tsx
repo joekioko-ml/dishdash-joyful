@@ -47,11 +47,15 @@ function AdminPage() {
       <Tabs defaultValue="overview" className="mt-8">
         <TabsList>
           <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="analytics">Analytics</TabsTrigger>
           <TabsTrigger value="menu">Menu</TabsTrigger>
           <TabsTrigger value="staff">Staff</TabsTrigger>
         </TabsList>
         <TabsContent value="overview">
           <Overview />
+        </TabsContent>
+        <TabsContent value="analytics">
+          <AdminAnalytics />
         </TabsContent>
         <TabsContent value="menu">
           <MenuAdmin />
@@ -60,6 +64,7 @@ function AdminPage() {
           <StaffAdmin />
         </TabsContent>
       </Tabs>
+
     </div>
   );
 }
