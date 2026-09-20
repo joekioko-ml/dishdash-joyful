@@ -1,8 +1,5 @@
 # DineFlow System
 
-You are a highly experienced software developer, build for me a Restaurant Management System as explained:
-
-
 
 A Restaurant Management System is a real-world business application that helps restaurants manage tables, menus, orders, kitchen operations, billing, inventory, and staff. It combines customer-facing features with administrative dashboards, making it an excellent enterprise-level portfolio project.
 
